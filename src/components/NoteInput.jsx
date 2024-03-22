@@ -36,7 +36,7 @@ class NoteInput extends React.Component {
       <form className="note-input" onSubmit={this.onSubmitInputHandler}>
         <input type="text" className="note-input__title" onChange={this.onChangeTitleHandler}/>
         <p className="note-input__title-char-limit"></p>
-        <textarea type="text" className="note-input__body" onSubmit={this.onChangeBodyHandler}/>
+        <textarea type="text" className="note-input__body" onChange={this.onChangeBodyHandler}/>
         <button>Buat</button>
       </form>
     );
