@@ -2,6 +2,7 @@ import React from "react";
 import { getInitialData, showFormattedDate } from "../utils/index";
 import NoteHeader from "./NoteHeader";
 import NoteList from "./NoteList";
+import NoteInput from "./NoteInput";
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -65,19 +66,37 @@ class NoteApp extends React.Component {
     })
   }
 
+  onSubmitInputHandler = ({ title, body }) => {
+    const newNote = {
+      id: Number(new Date()),
+      title,
+      body,
+      createdAt: new Date().toISOString(),
+      archived: false
+    }
+    this.setState((prevState) => ({
+      notes: [
+        ...prevState.notes, newNote
+      ]
+    }));
+  }
+
   render() {
     return (
-      <div>
+      <>
         <NoteHeader onSearch={this.onSearchHandler}/>
-        <NoteList 
-          notes={this.state.notes}
-          dateConverter={showFormattedDate}
-          searchTitle={this.state.search}
-          onDeleteHandler={this.onDeleteHandler}
-          onArchiveHandler={this.onArchiveHandler}
-          onUnarchiveHandler={this.onUnarchiveHandler}
-        />
-      </div>
+        <div className="note-app__body">
+          <NoteInput onSubmitInput={this.onSubmitInputHandler} />
+          <NoteList 
+            notes={this.state.notes}
+            dateConverter={showFormattedDate}
+            searchTitle={this.state.search}
+            onDeleteHandler={this.onDeleteHandler}
+            onArchiveHandler={this.onArchiveHandler}
+            onUnarchiveHandler={this.onUnarchiveHandler}
+          />
+        </div>
+      </>
     )
   }
 }
