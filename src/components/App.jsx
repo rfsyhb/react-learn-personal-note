@@ -1,11 +1,22 @@
 import React from "react";
+import { getInitialData } from "../utils/index.js";
 
-function App({ name }) {
-  return (
-    <div>
-      <h1>Hello, {name}!</h1>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      notes: getInitialData(),
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Belajar React</h1>
+        <p>React itu mudah!</p>
+      </div>
+    );
+  }
 }
 
 export default App;
