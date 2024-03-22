@@ -20,16 +20,21 @@ function NoteList({ notes, dateConverter, searchTitle }) {
       {UnarchivedNotes.length > 0
         ? UnarchivedNotes.map((note) => (
           <NoteItem 
+            key={note.id}
+            id={note.id}
             title={note.title}
             body={note.body}
             createdAt={note.createdAt}
             dateConverter={dateConverter}
+            archived={note.archived}
           />
         ))       
         : <p className="notes-list__empty-message">Tidak ada catatan</p>}
       {ArchivedNotes.length > 0
       ? ArchivedNotes.map((note) => (
         <NoteItem 
+          key={note.id}
+          id={note.id}
           title={note.title}
           body={note.body}
           createdAt={note.createdAt}

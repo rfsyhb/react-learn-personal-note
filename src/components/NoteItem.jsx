@@ -1,16 +1,25 @@
 import React from "react";
 import NoteItemContent from "./NoteItemContent";
+import NoteItemActionArchived from "./NoteItemActionArchived";
+import NoteItemActionUnarchived from "./NoteItemActionUnarchived";
 
-function NoteItem({ title, body, createdAt, dateConverter }) {
+function NoteItem({ title, body, createdAt, dateConverter, archived, id }) {
   return (
     <div className="note-item">
-    <NoteItemContent
-      title={title}
-      body={body}
-      createdAt={createdAt}
-      dateConverter={dateConverter}
+      <NoteItemContent
+        title={title}
+        body={body}
+        createdAt={createdAt}
+        dateConverter={dateConverter}
       />
-    <h1>Reserved buat button</h1>
+      {archived
+        ? <NoteItemActionArchived 
+            id={id}
+          />
+        : <NoteItemActionUnarchived 
+            id={id}
+          />
+      }
     </div>
   );
 }
