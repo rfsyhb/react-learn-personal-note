@@ -16,9 +16,30 @@ function NoteList({ notes, dateConverter, searchTitle, onDeleteHandler, onArchiv
   const ArchivedNotes = filteredNotes.filter(note => note.archived)
   
   return (
-    <div className="note-list">
-      {UnarchivedNotes.length > 0
-        ? UnarchivedNotes.map((note) => (
+    <>
+      <h2>Catatan Aktif</h2>
+      <div className="notes-list">
+        {UnarchivedNotes.length > 0
+          ? UnarchivedNotes.map((note) => (
+            <NoteItem 
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              body={note.body}
+              createdAt={note.createdAt}
+              dateConverter={dateConverter}
+              archived={note.archived}
+              onDeleteHandler={onDeleteHandler}
+              onArchiveHandler={onArchiveHandler}
+            />
+          ))       
+          : <p className="notes-list__empty-message">Tidak ada catatan</p>}
+        </div>
+      
+      <h2>Arsip</h2>
+      <div className="notes-list">
+        {ArchivedNotes.length > 0
+        ? ArchivedNotes.map((note) => (
           <NoteItem 
             key={note.id}
             id={note.id}
@@ -28,27 +49,12 @@ function NoteList({ notes, dateConverter, searchTitle, onDeleteHandler, onArchiv
             dateConverter={dateConverter}
             archived={note.archived}
             onDeleteHandler={onDeleteHandler}
-            onArchiveHandler={onArchiveHandler}
+            onUnarchiveHandler={onUnarchiveHandler}
           />
-        ))       
-        : <p className="notes-list__empty-message">Tidak ada catatan</p>}
-      {ArchivedNotes.length > 0
-      ? ArchivedNotes.map((note) => (
-        <NoteItem 
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          body={note.body}
-          createdAt={note.createdAt}
-          dateConverter={dateConverter}
-          archived={note.archived}
-          onDeleteHandler={onDeleteHandler}
-          onUnarchiveHandler={onUnarchiveHandler}
-        />
-      ))
-      :<p className="notes-list__empty-message">Tidak ada catatan</p>}
-      
+        ))
+        :<p className="notes-list__empty-message">Tidak ada catatan</p>}
     </div>
+    </>
   );
 }
 
