@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes, dateConverter, searchTitle }) {
+function NoteList({ notes, dateConverter, searchTitle, onDeleteHandler, onArchiveHandler, onUnarchiveHandler }) {
   const filteredNotes = searchTitle.trim() === ''
     ? notes
     : notes.filter((note) => {
@@ -27,6 +27,8 @@ function NoteList({ notes, dateConverter, searchTitle }) {
             createdAt={note.createdAt}
             dateConverter={dateConverter}
             archived={note.archived}
+            onDeleteHandler={onDeleteHandler}
+            onArchiveHandler={onArchiveHandler}
           />
         ))       
         : <p className="notes-list__empty-message">Tidak ada catatan</p>}
@@ -39,6 +41,9 @@ function NoteList({ notes, dateConverter, searchTitle }) {
           body={note.body}
           createdAt={note.createdAt}
           dateConverter={dateConverter}
+          archived={note.archived}
+          onDeleteHandler={onDeleteHandler}
+          onUnarchiveHandler={onUnarchiveHandler}
         />
       ))
       :<p className="notes-list__empty-message">Tidak ada catatan</p>}

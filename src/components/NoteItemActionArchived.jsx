@@ -1,10 +1,10 @@
 import React from "react";
 
-function NoteItemActionArchived ({ id }) {
+function NoteItemActionArchived ({ id, onDeleteHandler, onUnarchiveHandler }) {
   return (
     <div className="note-item__action">
-      <button className="note-item__delete-button" >Hapus</button>
-      <button className="note-item__archve-button" >Pindahkan</button>
+      <button className="note-item__delete-button" onClick={() => onDeleteHandler(id)}>Hapus</button>
+      <button className="note-item__archve-button" onClick={() => onUnarchiveHandler(id)}>Pindahkan</button>
     </div>
   );
 }
