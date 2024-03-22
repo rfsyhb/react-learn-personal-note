@@ -29,6 +29,7 @@ class NoteApp extends React.Component {
           <NoteList 
             notes={this.state.notes}
             dateConverter={showFormattedDate}
+            searchTitle={this.state.search}
           />
         </div>
       </div>
