@@ -10,6 +10,7 @@ class NoteApp extends React.Component {
       notes: getInitialData(),
       search: ''
     };
+    
   }
 
   // menyimpan searchTerm ke dalam state
@@ -35,9 +36,13 @@ class NoteApp extends React.Component {
       const notes = prevState.notes.map((note) => {
         // bayangkan lagi keliling cek satu satu
         if (note.id === id) {
-          return { ...note, archived: false };
+          return { 
+            ...note, 
+            archived: true 
+          };
+        } else {
+          return note;
         }
-        return note;
       })
       return {
         notes: notes
@@ -50,7 +55,7 @@ class NoteApp extends React.Component {
       const notes = prevState.notes.map((note) => {
         // bayangkan lagi keliling cek satu satu
         if (note.id === id) {
-          return { ...note, archived: true };
+          return { ...note, archived: false };
         }
         return note;
       })
