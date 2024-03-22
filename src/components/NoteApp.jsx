@@ -1,6 +1,7 @@
 import React from "react";
 import { getInitialData, showFormattedDate } from "../utils/index";
 import NoteHeader from "./NoteHeader";
+import NoteList from "./NoteList";
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -24,7 +25,12 @@ class NoteApp extends React.Component {
     return (
       <div>
         <NoteHeader onSearch={this.onSearchHandler}/>
-        {showFormattedDate(this.state.notes[0].createdAt)}
+        <div className="UJICOBA">
+          <NoteList 
+            notes={this.state.notes}
+            dateConverter={showFormattedDate}
+          />
+        </div>
       </div>
     )
   }
