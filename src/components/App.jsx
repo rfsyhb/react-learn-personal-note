@@ -1,5 +1,5 @@
 import React from "react";
-import { getInitialData } from "../utils/index.js";
+import { getInitialData, showFormattedDate } from "../utils/index.js";
 
 class App extends React.Component {
   constructor(props) {
