@@ -31,7 +31,7 @@ class NoteInput extends React.Component {
     this.setState({ title: "", body: "" });
   }
 
-  renderTitleCharLimit() {
+  renderTitleCharLimit = () => {
     const title = this.state.title;
     const charLeft = 50 - title.length;
     return charLeft === 0 ? 'Telah mencapai limit batas karakter!' : `Judul karakter tersedia: ${charLeft}`;
