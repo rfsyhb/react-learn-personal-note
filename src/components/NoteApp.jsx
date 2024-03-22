@@ -3,7 +3,7 @@ import { getInitialData, showFormattedDate } from "../utils/index.js";
 import NoteHeader from "./NoteHeader";
 import NoteMain from "./NoteMain";
 
-class App extends React.Component {
+class NoteApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +59,7 @@ class App extends React.Component {
       };
     });
   }
-  
+
   render() {
     return (
       <>
@@ -77,4 +77,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default NoteApp;
